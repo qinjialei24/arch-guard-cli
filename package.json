@@ -9,5 +9,8 @@
   "bin": "./bin/www",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^7.9.0"
+  }
 }
