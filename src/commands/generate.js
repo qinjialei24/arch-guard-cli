@@ -22,6 +22,11 @@ function generatePage(fileName) {
   fileName = toUpperCaseFirstWord(fileName);
   fs.mkdirSync(PATH + `/${fileName}`);
   copyTemplate(ACTION_NAME, PATH + `/${fileName}/${fileName}.tsx`, fileName);
+  copyTemplate(
+    ACTION_NAME + 'Less',
+    PATH + `/${fileName}/${fileName}.less`,
+    fileName
+  );
   fs.mkdirSync(PATH + `/${fileName}` + '/Components');
 }
 
