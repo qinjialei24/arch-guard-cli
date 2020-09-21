@@ -1,15 +1,11 @@
 import React from "react";
 
 interface {{fileName}}Props {
-  children?:React.ReactNode
+  children?: React.ReactNode;
 }
 
-export const {{fileName}} = (props: {{fileName}}Props) => {
-  return (
-    <div>
-      {{fileName}}
-    </div>
-  )
+const {{fileName}} = (props: {{fileName}}Props) => {
+  return <div>{{fileName}}</div>;
 };
 
 {{fileName}}.defaultProps = {};
