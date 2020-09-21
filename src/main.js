@@ -29,8 +29,9 @@ Reflect.ownKeys(COMMAND_CONFIG).forEach((action) => {
       if (action === '*') {
         console.log(COMMAND_CONFIG[action].description);
       } else {
-        const location = path.resolve(__dirname, action);
-        require(location)(...process.argv.slice(3));
+        const location = path.resolve(__dirname, `./commands/${action}.js`);
+        const generator = require(location);
+        generator(...process.argv.slice(3));
       }
     });
 });
