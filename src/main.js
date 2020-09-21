@@ -30,7 +30,7 @@ Reflect.ownKeys(COMMAND_CONFIG).forEach((action) => {
         console.log(COMMAND_CONFIG[action].description);
       } else {
         const location = path.resolve(__dirname, `./commands/${action}.js`);
-        const generator = require(location);
+        const generator = require(location);//根据action， 动态在 commands 文件夹下查找对应的执行文件
         generator(...process.argv.slice(3));
       }
     });
