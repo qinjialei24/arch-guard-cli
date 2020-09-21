@@ -38,6 +38,10 @@ module.exports = (actionName, fileName, ...option) => {
       console.error('请在项目的 src 目录下运行！');
       return;
     }
+    if (fileName.includes('-')) {
+      console.error('pages下文件必须以首字母大写+驼峰命名！');
+      return;
+    }
     //TODO:检查文件名是否重复
 
     generatePage(fileName);
