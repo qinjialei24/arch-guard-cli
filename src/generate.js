@@ -33,6 +33,8 @@ function generatePage(fileName) {
   // 新建目录
   function mkdir(path, fn) {
     fs.mkdir(path, function (err) {
+      console.error('请在项目的 src 目录下运行！');
+      return;
       fn && fn();
     });
   }
@@ -44,15 +46,10 @@ function generatePage(fileName) {
 }
 
 module.exports = (actionName, fileName, ...option) => {
-  console.log('actionName: ', actionName);
   if (actionName === 'page') {
     generatePage(fileName);
   }
   if (actionName === 'component') {
     // xc g component basic / business
   }
-
-  console.log('actionName: ', actionName);
-  console.log('option: ', option);
-  console.log('fileName: ', fileName);
 };

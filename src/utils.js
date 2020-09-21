@@ -8,7 +8,6 @@ module.exports = {
   },
 
   generateFileByTemplate(template, data) {
-    console.log('11111');
     // compile the template
     var content = Handlebars.compile(template)(data);
     return content;
