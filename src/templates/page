@@ -1,0 +1,17 @@
+import React from "react";
+
+interface {{fileName}}Props {
+  children?:React.ReactNode
+}
+
+export const {{fileName}} = (props: {{fileName}}Props) => {
+  return (
+    <div>
+      {{fileName}}
+    </div>
+  )
+};
+
+{{fileName}}.defaultProps = {};
+
+export default {{fileName}};

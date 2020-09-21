@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { toUpperCaseFirstWord } = require('./utils');
+const { toUpperCaseFirstWord, generateFileByTemplate } = require('./utils');
 
 function copyTemplateByName(fileName) {
   fileName = path.join(__dirname, 'templates', fileName);
@@ -21,8 +21,11 @@ function generatePage(fileName) {
   fileName = toUpperCaseFirstWord(fileName);
   function copyTemplate(from, to) {
     from = path.join(__dirname, 'templates', from);
-    console.log(from);
-    write(to, fs.readFileSync(from, 'utf-8'));
+    const rawContent = fs.readFileSync(from, 'utf-8');
+    const finalContent = generateFileByTemplate(rawContent, {
+      fileName,
+    });
+    write(to, finalContent);
   }
   function write(path, str, mode) {
     fs.writeFileSync(path, str);
@@ -36,27 +39,8 @@ function generatePage(fileName) {
 
   var PATH = './pages';
   mkdir(PATH + `/${fileName}`, function () {
-    copyTemplate('page.js', PATH + `/${fileName}/${fileName}.tsx`);
+    copyTemplate('page', PATH + `/${fileName}/${fileName}.tsx`);
   });
-
-  // mkdir(PATH + `/pages`, function () {
-  //   mkdir(PATH + `/${fileName}/js`, function () {
-  //     copyTemplate('page.js', PATH + `/${fileName}/js/vue.min.js`);
-  //   });
-  // });
-
-  // mkdir(pageGeneratePath + '/public', function () {
-  //   mkdir(PATH + '/public/js', function () {
-  //     const pageGeneratePath = path.join(process.cwd(), 'pages');
-  //     console.log('pageGeneratePath: ', pageGeneratePath);
-  //     const res = copyTemplateByName('page.js');
-  //     fs.writeFileSync(path, str)
-  //     console.log('res: ', res);
-  //     copyTemplate('/js/vue.min.js', PATH + '/public/js/vue.min.js');
-  //   });
-  // });
-
-  // fs.writeFileSync(pageGeneratePath, res);
 }
 
 module.exports = (actionName, fileName, ...option) => {
