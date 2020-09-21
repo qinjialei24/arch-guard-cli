@@ -1,4 +1,5 @@
 const program = require('commander');
+const path = require('path');
 const { version } = require('./constants');
 
 const COMMAND_CONFIG = {
@@ -27,8 +28,20 @@ Reflect.ownKeys(COMMAND_CONFIG).forEach((action) => {
     .action(() => {
       if (action === '*') {
         console.log(COMMAND_CONFIG[action].description);
+      } else {
+        const location = path.resolve(__dirname, action);
+        require(location)(...process.argv.slice(3));
       }
     });
+});
+
+program.on('--help', () => {
+  console.log('\nExamples:');
+  Reflect.ownKeys(COMMAND_CONFIG).forEach((action) => {
+    COMMAND_CONFIG[action].examples.forEach((examples) => {
+      console.log(`${examples}`);
+    });
+  });
 });
 
 program.version(version).parse(process.argv);
