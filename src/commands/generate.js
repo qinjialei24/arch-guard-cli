@@ -18,20 +18,11 @@ function write(path, str, mode) {
   fs.writeFileSync(path, str);
 }
 
-// 新建目录
-function mkdir(path, fn) {
-  fs.mkdir(path, function (err) {
-    fn && fn();
-  });
-}
-
 function generatePage(fileName) {
   fileName = toUpperCaseFirstWord(fileName);
-  mkdir(PATH + `/${fileName}`, function () {
-    copyTemplate(ACTION_NAME, PATH + `/${fileName}/${fileName}.tsx`, fileName);
-  });
-
-  mkdir(PATH + `/${fileName}` + '/Components');
+  fs.mkdirSync(PATH + `/${fileName}`);
+  copyTemplate(ACTION_NAME, PATH + `/${fileName}/${fileName}.tsx`, fileName);
+  fs.mkdirSync(PATH + `/${fileName}` + '/Components');
 }
 
 module.exports = (actionName, fileName, ...option) => {
