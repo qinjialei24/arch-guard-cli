@@ -30,6 +30,8 @@ function generatePage(fileName) {
   mkdir(PATH + `/${fileName}`, function () {
     copyTemplate(ACTION_NAME, PATH + `/${fileName}/${fileName}.tsx`, fileName);
   });
+
+  mkdir(PATH + `/${fileName}` + '/Components');
 }
 
 module.exports = (actionName, fileName, ...option) => {
