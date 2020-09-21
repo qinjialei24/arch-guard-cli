@@ -38,6 +38,7 @@ module.exports = (actionName, fileName, ...option) => {
       console.error('请在项目的 src 目录下运行！');
       return;
     }
+    //TODO:检查文件名是否重复
 
     generatePage(fileName);
   }
