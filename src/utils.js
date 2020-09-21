@@ -1,8 +1,5 @@
-const axios = require('axios');
 const Metalsmith = require('metalsmith'); // 引入静态网站生成器
 const Handlebars = require('handlebars'); // 引入模板引擎
-const fs = require('fs');
-const path = require('path');
 
 module.exports = {
   toUpperCaseFirstWord(str) {
