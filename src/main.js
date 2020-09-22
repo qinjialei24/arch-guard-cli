@@ -7,12 +7,7 @@ function initCommand() {
   initCommandGenerate(program);
   initCommandHelp(program);
 
-  program
-    .on('--help', () => {
-      console.log(`--help`);
-    })
-    .version(version)
-    .parse(process.argv);
+  program.version(version).parse(process.argv);
 }
 
 initCommand();
