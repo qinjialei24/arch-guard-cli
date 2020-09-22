@@ -51,9 +51,16 @@ function generateComponent(fileName, componentOptions) {
 function generateComponentBasic(fileName) {
   fileName = toUpperCaseFirstWord(fileName);
   fs.mkdirSync(FILE_PATH.componentsPath + '/Basic' + `/${fileName}`);
+
   copyTemplate(
     `componentBasic`,
     FILE_PATH.componentsPath + '/Basic' + `/${fileName}/${fileName}.tsx`,
+    fileName
+  );
+
+  copyTemplate(
+    'componentBasicLess',
+    FILE_PATH.componentsPath + '/Basic' + `/${fileName}/${fileName}.less`,
     fileName
   );
 }
@@ -69,12 +76,12 @@ function generateComponentBusiness(fileName) {
 }
 
 function generate(options, actionName, fileName) {
+  if (!process.cwd().endsWith('/src')) {
+    console.error('请在项目的 src 目录下运行！');
+    return;
+  }
   console.log('actionName: ', actionName);
   if (actionName === ACTION_NAME) {
-    if (!process.cwd().endsWith('/src')) {
-      console.error('请在项目的 src 目录下运行！');
-      return;
-    }
     if (fileName.includes('-')) {
       console.error('pages下文件必须以首字母大写+驼峰命名！');
       return;
