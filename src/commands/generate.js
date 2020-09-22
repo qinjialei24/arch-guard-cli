@@ -80,7 +80,6 @@ function generate(options, actionName, fileName) {
     console.error('请在项目的 src 目录下运行！');
     return;
   }
-  console.log('actionName: ', actionName);
   if (actionName === ACTION_NAME) {
     if (fileName.includes('-')) {
       console.error('pages下文件必须以首字母大写+驼峰命名！');
