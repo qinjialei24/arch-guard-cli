@@ -1,6 +1,6 @@
 function printCommand() {
   const command = [
-    '注意事项：必须在项目的src目录下运行',
+    '注意事项：必须在项目的 src 目录下运行',
     '常用缩写：generate => g,  component => c , --basic => -ba,  --business => -bu',
     '常用命令：',
     ' 创建页面：ag g page Demo',
