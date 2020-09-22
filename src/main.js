@@ -6,8 +6,7 @@ const initCommandHelp = require('./commands/Help');
 function initCommand() {
   initCommandGenerate(program);
   initCommandHelp(program);
-
-  program.version(version).parse(process.argv);
 }
-
 initCommand();
+
+program.version(version).parse(process.argv);
