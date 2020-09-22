@@ -1,11 +1,11 @@
 const program = require('commander');
 const { version } = require('./constants');
 const initCommandGenerate = require('./commands/generate');
-const initCommandList = require('./commands/list');
+const initCommandHelp = require('./commands/Help');
 
 function initCommand() {
   initCommandGenerate(program);
-  initCommandList(program);
+  initCommandHelp(program);
 
   program
     .on('--help', () => {
