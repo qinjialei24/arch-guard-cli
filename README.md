@@ -1,8 +1,8 @@
-# x-cli 快速生成符合项目风格的代码，类似 angular-cli
+# arch-guard-cli 快速生成符合项目风格的代码，类似 angular-cli
 
 ## 使用
 ```bash
-npm install x-cli -g
+npm install arch-guard-cli -g
 ```
 
 ## 常用命令(必须在项目的**src**目录下运行)
