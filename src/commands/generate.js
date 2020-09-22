@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const { toUpperCaseFirstWord, generateFileByTemplate } = require('../utils');
 
 const PATH = './pages';
@@ -30,7 +31,12 @@ function generatePage(fileName) {
   fs.mkdirSync(PATH + `/${fileName}` + '/Components');
 }
 
-module.exports = (actionName, fileName, ...option) => {
+function generateComponent(fileName, ...componentOption) {
+  console.log('componentOption: ', componentOption);
+  // console.log(program.basic);
+}
+
+function generate(actionName, fileName, ...option) {
   if (actionName === ACTION_NAME) {
     if (!process.cwd().endsWith('/src')) {
       console.error('请在项目的 src 目录下运行！');
@@ -44,7 +50,24 @@ module.exports = (actionName, fileName, ...option) => {
 
     generatePage(fileName);
   }
-  if (actionName === 'component') {
+  if (actionName === 'component' || 'c') {
     // xc g component basic / business
+    generateComponent(fileName, ...option);
   }
-};
+}
+
+function initCommandGenerate(program) {
+  program
+    .command('generate')
+    .alias('g')
+    .description('generate a page/components/api')
+    .option('-ba, --basic', '创建 basic components')
+    .option('-bu, --business', '创建 business components')
+    .action((options) => {
+      console.log('options: ', options.basic);
+      const location = path.resolve(__dirname, `./commands/generate.js`);
+      generate(...process.argv.slice(3));
+    });
+}
+
+module.exports = initCommandGenerate;
