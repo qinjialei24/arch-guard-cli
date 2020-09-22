@@ -90,7 +90,7 @@ function generate(options, actionName, fileName) {
     generatePage(fileName);
   }
   if (actionName === 'component' || 'c') {
-    // xc g component basic / business
+    // ag g component basic / business
     generateComponent(fileName, options);
   }
 }
@@ -103,7 +103,7 @@ function initCommandGenerate(program) {
     .option('-ba, --basic', '创建 basic components')
     .option('-bu, --business', '创建 business components')
     .action((options) => {
-      generate(options, ...process.argv.slice(3)); // xc g component
+      generate(options, ...process.argv.slice(3)); // ag g component
     });
 }
 
