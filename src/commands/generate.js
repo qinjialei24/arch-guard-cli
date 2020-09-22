@@ -3,7 +3,11 @@ const path = require('path');
 
 const { toUpperCaseFirstWord, generateFileByTemplate } = require('../utils');
 
-const PATH = './pages';
+const FILE_PATH = {
+  pagesPath: './pages', //页面存放的路径 TODO: 处理首字母大小写
+  componentsPath: './components', //组件存放的路径，TODO: 处理首字母大小写
+};
+
 const ACTION_NAME = 'page';
 
 function copyTemplate(from, to, fileName) {
@@ -21,14 +25,18 @@ function write(path, str, mode) {
 
 function generatePage(fileName) {
   fileName = toUpperCaseFirstWord(fileName);
-  fs.mkdirSync(PATH + `/${fileName}`);
-  copyTemplate(ACTION_NAME, PATH + `/${fileName}/${fileName}.tsx`, fileName);
+  fs.mkdirSync(FILE_PATH.pagesPath + `/${fileName}`);
   copyTemplate(
-    ACTION_NAME + 'Less',
-    PATH + `/${fileName}/${fileName}.less`,
+    ACTION_NAME,
+    FILE_PATH.pagesPath + `/${fileName}/${fileName}.tsx`,
     fileName
   );
-  fs.mkdirSync(PATH + `/${fileName}` + '/Components');
+  copyTemplate(
+    ACTION_NAME + 'Less',
+    FILE_PATH.pagesPath + `/${fileName}/${fileName}.less`,
+    fileName
+  );
+  fs.mkdirSync(FILE_PATH.pagesPath + `/${fileName}` + '/Components');
 }
 
 function generateComponent(fileName, componentOptions) {
@@ -40,13 +48,28 @@ function generateComponent(fileName, componentOptions) {
   }
 }
 
-function generateComponentBasic(componentName) {
-  
+function generateComponentBasic(fileName) {
+  fileName = toUpperCaseFirstWord(fileName);
+  fs.mkdirSync(FILE_PATH.componentsPath + '/Basic' + `/${fileName}`);
+  copyTemplate(
+    `componentBasic`,
+    FILE_PATH.componentsPath + '/Basic' + `/${fileName}/${fileName}.tsx`,
+    fileName
+  );
 }
 
-function generateComponentBusiness(componentName) {}
+function generateComponentBusiness(fileName) {
+  fileName = toUpperCaseFirstWord(fileName);
+  fs.mkdirSync(FILE_PATH.componentsPath + '/Business' + `/${fileName}`);
+  copyTemplate(
+    `componentBusiness`,
+    FILE_PATH.componentsPath + '/Business' + `/${fileName}/${fileName}.tsx`,
+    fileName
+  );
+}
 
 function generate(options, actionName, fileName) {
+  console.log('actionName: ', actionName);
   if (actionName === ACTION_NAME) {
     if (!process.cwd().endsWith('/src')) {
       console.error('请在项目的 src 目录下运行！');
