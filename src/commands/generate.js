@@ -31,12 +31,22 @@ function generatePage(fileName) {
   fs.mkdirSync(PATH + `/${fileName}` + '/Components');
 }
 
-function generateComponent(fileName, ...componentOption) {
-  console.log('componentOption: ', componentOption);
-  // console.log(program.basic);
+function generateComponent(fileName, componentOptions) {
+  const { basic, business } = componentOptions;
+  if (basic) {
+    generateComponentBasic(fileName);
+  } else if (business) {
+    generateComponentBusiness(fileName);
+  }
 }
 
-function generate(actionName, fileName, ...option) {
+function generateComponentBasic(componentName) {
+  
+}
+
+function generateComponentBusiness(componentName) {}
+
+function generate(options, actionName, fileName) {
   if (actionName === ACTION_NAME) {
     if (!process.cwd().endsWith('/src')) {
       console.error('请在项目的 src 目录下运行！');
@@ -47,12 +57,11 @@ function generate(actionName, fileName, ...option) {
       return;
     }
     //TODO:检查文件名是否重复
-
     generatePage(fileName);
   }
   if (actionName === 'component' || 'c') {
     // xc g component basic / business
-    generateComponent(fileName, ...option);
+    generateComponent(fileName, options);
   }
 }
 
@@ -64,9 +73,7 @@ function initCommandGenerate(program) {
     .option('-ba, --basic', '创建 basic components')
     .option('-bu, --business', '创建 business components')
     .action((options) => {
-      console.log('options: ', options.basic);
-      const location = path.resolve(__dirname, `./commands/generate.js`);
-      generate(...process.argv.slice(3));
+      generate(options, ...process.argv.slice(3)); // xc g component
     });
 }
 
