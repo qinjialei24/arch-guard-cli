@@ -1,5 +1,5 @@
-const Metalsmith = require('metalsmith'); // 引入静态网站生成器
-const Handlebars = require('handlebars'); // 引入模板引擎
+const Metalsmith = require('metalsmith');
+const Handlebars = require('handlebars');
 
 module.exports = {
   toUpperCaseFirstWord(str) {
