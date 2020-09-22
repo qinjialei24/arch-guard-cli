@@ -73,6 +73,12 @@ function generateComponentBusiness(fileName) {
     FILE_PATH.componentsPath + '/Business' + `/${fileName}/${fileName}.tsx`,
     fileName
   );
+
+  copyTemplate(
+    'componentBasicLess',
+    FILE_PATH.componentsPath + '/Business' + `/${fileName}/${fileName}.less`,
+    fileName
+  );
 }
 
 function generate(options, actionName, fileName) {
