@@ -75,7 +75,7 @@ function generateComponentBusiness(fileName) {
   );
 
   copyTemplate(
-    'componentBasicLess',
+    'componentBusinessLess',
     FILE_PATH.componentsPath + '/Business' + `/${fileName}/${fileName}.less`,
     fileName
   );
