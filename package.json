@@ -10,7 +10,7 @@
     "xc": "./bin/www"
   },
   "keywords": [],
-  "author": "",
+  "author": "qinjialei",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
