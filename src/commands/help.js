@@ -16,11 +16,6 @@ function initCommandList(program) {
     .description('列出常用命令')
     .action((options) => {
       printCommand();
-      // console.log(`常用缩写：generate => g,  component => c , --basic => -ba,  --business => -bu,\n常用命令：
-      // 创建页面：ag g page Demo\n  创建基础组件：ag g component --basic
-      // `);
-      // console.log(1111);
-      // console.log(1111222);
     });
 }
 

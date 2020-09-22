@@ -36,7 +36,7 @@ function generatePage(fileName) {
     FILE_PATH.pagesPath + `/${fileName}/${fileName}.less`,
     fileName
   );
-  fs.mkdirSync(FILE_PATH.pagesPath + `/${fileName}` + '/Components');
+  fs.mkdirSync(FILE_PATH.pagesPath + `/${fileName}` + '/components');
 }
 
 function generateComponent(fileName, componentOptions) {
