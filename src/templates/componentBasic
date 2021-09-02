@@ -1,19 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import styles from './{{componentName}}.style';
 
 interface {{componentName}}Props {
 
 }
 
-const styles = StyleSheet.create({
-    {{fileName}}: {},
-});
 
 export const {{componentName}} = (props: {{componentName}}Props) => {
     const {  } = props;
 
     return (
-        <View style={ styles.{{fileName}} }>
+        <View style={styles.{{fileName}} }>
             <Text>1</Text>
         </View>
     );

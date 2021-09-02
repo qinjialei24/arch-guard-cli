@@ -1,0 +1,12 @@
+import ShallowRenderer from 'react-test-renderer/shallow';
+import React from 'react';
+import { {{componentName}} } from './{{componentName}}';
+
+describe('{{componentName}}', () => {
+    it('should render correctly', () => {
+        const renderer = ShallowRenderer.createRenderer();
+        renderer.render(<{{componentName}}  />);
+        const tree = renderer.getRenderOutput();
+        expect(tree).toMatchSnapshot();
+    });
+});

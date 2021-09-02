@@ -46,18 +46,15 @@ function generateComponent(fileName, componentOptions) {
     console.log("-> basic", basic);
     generateComponentBasic(fileName)
 
-    // if (basic) {
-    //   generateComponentBasic(fileName);
-    // } else if (business) {
-    //   generateComponentBusiness(fileName);
-    // }
+
 }
 
 function generateComponentBasic(fileName) {
-    console.log("-> fileName", fileName);
-    // fs.mkdirSync(FILE_PATH.componentsPath  + `/${fileName}`);
-    fs.mkdirSync(fileName)
     const componentName = toUpperCaseFirstWord(fileName)
+
+    fs.mkdirSync(fileName)
+    fs.mkdirSync(`${fileName}/components`)
+
 
     copyTemplate(
         `componentBasic`,
@@ -65,12 +62,19 @@ function generateComponentBasic(fileName) {
         fileName,
         componentName
     );
-    //
-    // copyTemplate(
-    //   'componentBasicLess',
-    //   FILE_PATH.componentsPath + `/${fileName}/${fileName}.less`,
-    //   fileName
-    // );
+
+    copyTemplate(
+      'componentBasicStyle',
+       `${fileName}/${componentName}.style.ts`,
+      fileName
+    );
+
+    copyTemplate(
+      'componentSpec',
+       `${fileName}/${componentName}.spec.ts`,
+        '',
+        componentName
+    );
 }
 
 function generateComponentBusiness(fileName) {
