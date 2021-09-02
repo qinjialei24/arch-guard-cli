@@ -1,0 +1,23 @@
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+
+const styles = StyleSheet.create({
+    {{fileName}}: {
+
+    },
+});
+
+interface {{fileName}}Props {
+
+}
+
+export const {{fileName}} = (props: {{fileName}}Props) => {
+    const {  } = props;
+
+    return (
+           <View style={styles.{{fileName}}}>
+               <Text>1</Text>
+           </View>
+       );
+};
+
