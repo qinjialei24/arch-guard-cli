@@ -94,34 +94,19 @@ function generateComponentBusiness(fileName) {
 }
 
 function generate(options, actionName, fileName) {
+    console.log("-> fileName", fileName);
+    console.log("-> actionName", actionName);
     console.log("-> process.cwd()", process.cwd());
-    // if (!process.cwd().endsWith('/src')) {
-    //   console.error('请在项目的 src 目录下运行！');
-    //   return;
-    // }
-    // if (actionName === ACTION_NAME) {
-    //   if (fileName.includes('-')) {
-    //     console.error('pages下文件必须以首字母大写+驼峰命名！');
-    //     return;
-    //   }
-    //   //TODO:检查文件名是否重复
-    //   generatePage(fileName);
-    // }
-    if (actionName === 'component' || 'c') {
-        // ag g component basic / business
-        generateComponent(fileName, options);
-    }
+    generateComponent(fileName, options);
+
 }
 
 function initCommandGenerate(program) {
     program
         .command('generate')
         .alias('g')
-        .description('generate a page/components/api')
-        .option('-ba, --basic', '创建 basic components')
-        .option('-bu, --business', '创建 business components')
         .action((options) => {
-            generate(options, ...process.argv.slice(3)); // ag g component
+            generate(options, ...process.argv.slice(2)); // ag g component
         });
 }
 
