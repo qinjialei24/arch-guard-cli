@@ -1,16 +1,22 @@
-import React from "react";
-import './{{fileName}}.less'
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 
 interface {{componentName}}Props {
-  children?: React.ReactNode;
+
 }
 
-export const {{componentName}} = (props: {{fileName}}Props) => {
-  return (
-    <div className="Ba{{fileName}}">
-      {props.children}
-    </div>
-  );
+const styles = StyleSheet.create({
+    {{fileName}}: {},
+});
+
+export const {{componentName}} = (props: {{componentName}}Props) => {
+    const {  } = props;
+
+    return (
+        <View style={ styles.{{fileName}} }>
+            <Text>1</Text>
+        </View>
+    );
 };
 
-Ba{{fileName}}.defaultProps = {};
+
