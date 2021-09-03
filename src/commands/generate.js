@@ -38,22 +38,6 @@ function generateComponentBasic(fileName) {
     );
 }
 
-function generateComponentBusiness(fileName) {
-    fileName = toUpperCaseFirstWord(fileName);
-    fs.mkdirSync(FILE_PATH.componentsPath + '/Business' + `/${fileName}`);
-    copyTemplate(
-        `componentBusiness`,
-        FILE_PATH.componentsPath + '/Business' + `/${fileName}/${fileName}.tsx`,
-        fileName
-    );
-
-    copyTemplate(
-        'componentBusinessLess',
-        FILE_PATH.componentsPath + '/Business' + `/${fileName}/${fileName}.less`,
-        fileName
-    );
-}
-
 function generate(options, actionName, fileName) {
     generateComponentBasic(fileName)
 }

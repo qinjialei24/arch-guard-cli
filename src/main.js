@@ -7,6 +7,7 @@ function initCommand() {
   initCommandGenerate(program);
   initCommandHelp(program);
 }
+
 initCommand();
 
 program.version(version).parse(process.argv);
